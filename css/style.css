@@ -186,6 +186,14 @@ nav {
   font-size: 18px;
   box-shadow: 0 4px 12px rgba(255, 126, 199, 0.4);
   transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .logo:hover .logo-icon {
@@ -266,6 +274,7 @@ nav {
 .mascot-svg {
   width: 150px;
   height: 150px;
+  object-fit: cover;
   filter: drop-shadow(0 12px 24px rgba(255, 126, 199, 0.3));
 }
 
@@ -277,6 +286,7 @@ nav {
 .hero__sticker {
   position: absolute;
   font-size: 30px;
+  color: #ff9ec7;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
   animation: floaty 3.5s ease-in-out infinite;
 }
@@ -409,52 +419,7 @@ section.content {
   padding: 70px 20px;
 }
 
-.about {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 70px 20px;
-}
-
-.about__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
-}
-
-.card {
-  background: var(--white);
-  border-radius: var(--radius);
-  padding: 30px 24px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  border: 2px solid #ffe3f0;
-  transition: all 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px) rotate(-1deg);
-  box-shadow: var(--shadow-hover);
-  border-color: var(--pink);
-}
-
-.card__emoji {
-  font-size: 44px;
-  margin-bottom: 14px;
-  display: inline-block;
-  animation: floaty 3s ease-in-out infinite;
-}
-
-.card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: var(--pink-deep);
-}
-
-.card p {
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: var(--text-soft);
-}
+/* ---------- features grid ---------- */
 
 /* ---------- links hub ---------- */
 

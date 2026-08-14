@@ -31,15 +31,24 @@
 // Sparkle cursor trail
 (function initCursorSparkles() {
   let lastSparkle = 0;
-  const sparkleChars = ["✨", "⭐", "💫", "🌸"];
+  const sparkleChars = [
+    "nf-fa-star",
+    "nf-oct-star",
+    "nf-cod-star_empty",
+    "nf-weather-stars",
+    "nf-fa-heart_o",
+    "nf-fa-heart",
+    "nf-cod-sparkle",
+    "nf-cod-sparkle_filled",
+  ];
 
   document.addEventListener("mousemove", (e) => {
     const now = Date.now();
     if (now - lastSparkle < 90) return;
     lastSparkle = now;
-    const sparkle = document.createElement("div");
-    sparkle.className = "sparkle-trail";
-    sparkle.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+    const sparkle = document.createElement("i");
+    sparkle.className =
+      "sparkle-trail nf " + sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
     sparkle.style.left = e.clientX + "px";
     sparkle.style.top = e.clientY + "px";
     document.body.appendChild(sparkle);
