@@ -154,10 +154,15 @@ nav {
   font-weight: 700;
   font-size: 20px;
   color: var(--pink-deep);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(-4deg) scale(1.05);
 }
 
 .logo-icon {
@@ -171,12 +176,6 @@ nav {
   color: white;
   font-size: 18px;
   box-shadow: 0 4px 12px rgba(255, 126, 199, 0.4);
-  animation: bounce 2.5s ease-in-out infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-5px); }
 }
 
 .nav-links {
@@ -250,20 +249,15 @@ nav {
   animation: bob 4s ease-in-out infinite;
 }
 
-.hero__art-face {
-  font-size: 84px;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.08));
-  animation: blink 4.5s infinite;
+.mascot-svg {
+  width: 150px;
+  height: 150px;
+  filter: drop-shadow(0 12px 24px rgba(255, 126, 199, 0.3));
 }
 
 @keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
-}
-
-@keyframes blink {
-  0%, 90%, 100% { transform: scaleY(1); }
-  94%           { transform: scaleY(0.08); }
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-14px) rotate(3deg); }
 }
 
 .hero__sticker {
@@ -753,8 +747,9 @@ footer {
     height: 130px;
   }
 
-  .hero__art-face {
-    font-size: 66px;
+  .mascot-svg {
+    width: 120px;
+    height: 120px;
   }
 }
 
