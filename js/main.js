@@ -19,9 +19,28 @@
   }
 })();
 
+// Sparkle cursor trail
+(function initCursorSparkles() {
+  let lastSparkle = 0;
+  const sparkleChars = ["✨", "⭐", "💫", "🌸"];
+
+  document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastSparkle < 90) return;
+    lastSparkle = now;
+    const sparkle = document.createElement("div");
+    sparkle.className = "sparkle-trail";
+    sparkle.textContent = sparkleChars[Math.floor(Math.random() * sparkleChars.length)];
+    sparkle.style.left = e.clientX + "px";
+    sparkle.style.top = e.clientY + "px";
+    document.body.appendChild(sparkle);
+    setTimeout(() => sparkle.remove(), 900);
+  });
+})();
+
 // Reveal on scroll
 (function initReveal() {
-  const targets = document.querySelectorAll(".section-title, .card, .link-card");
+  const targets = document.querySelectorAll(".section-title, .section-subtitle, .card, .feature-card, .link-card");
   if (!("IntersectionObserver" in window)) {
     targets.forEach((el) => el.classList.add("visible"));
     return;
@@ -42,6 +61,19 @@
   targets.forEach((el) => {
     el.classList.add("reveal");
     observer.observe(el);
+  });
+})();
+
+// Smooth scroll for in-page anchors
+(function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const target = document.querySelector(link.getAttribute("href"));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
   });
 })();
 

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -20,13 +21,22 @@
   <div class="blob blob--mint" aria-hidden="true"></div>
 
   <!-- nav -->
-  <header class="nav">
-    <a href="#top" class="nav__brand">🐾 ff.top</a>
-    <nav class="nav__links">
-      <a href="#about">about</a>
-      <a href="#links">links</a>
-    </nav>
-  </header>
+  <nav>
+    <a href="#top" class="logo">
+      <span class="logo-icon">🌸</span>
+      furryfemboys.top
+    </a>
+    <ul class="nav-links">
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#links">Links</a></li>
+    </ul>
+    <a href="#links" class="nav-cta">
+      <i class="fa-brands fa-discord"></i>
+      Join Us
+    </a>
+  </nav>
 
   <main id="top">
 
@@ -78,6 +88,50 @@
       </div>
     </section>
 
+    <!-- FEATURES -->
+    <section class="content" id="features">
+      <h2 class="section-title">what you'll find here ♡</h2>
+      <p class="section-subtitle">Everything you need for a cozy, creative, and friendly time online</p>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon pink"><i class="fa-solid fa-palette"></i></div>
+          <h3>Art Gallery</h3>
+          <p>Share your creations, get kind feedback, and admire fellow fluffs. Daily prompts, weekly challenges, and seasonal art jams.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon purple"><i class="fa-solid fa-comments"></i></div>
+          <h3>Friendly Chat</h3>
+          <p>Hang out in cozy channels from deep talks to silly memes. There's always someone warm to chat with at any hour.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon blue"><i class="fa-solid fa-gamepad"></i></div>
+          <h3>Gaming Nights</h3>
+          <p>Weekly game sessions, movie nights, and watch parties. Bring snacks and your favorite plushie companion.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon mint"><i class="fa-solid fa-calendar-check"></i></div>
+          <h3>Events &amp; Meetups</h3>
+          <p>Themed events, voice hangouts, holiday parties, and seasonal celebrations happening all year round.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon yellow"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Resources</h3>
+          <p>Tutorials, guides, references, and a helpful community ready to support your creative journey at every step.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon peach"><i class="fa-solid fa-shield-heart"></i></div>
+          <h3>Safe Space</h3>
+          <p>A moderated, judgment-free zone where everyone is welcome to be exactly who they are. No exceptions.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- LINKS HUB -->
     <section class="links" id="links">
       <h2 class="section-title"><span class="section-title__emoji">🔗</span> find us around</h2>
@@ -125,9 +179,46 @@
 
   </main>
 
-  <footer class="footer">
-    <p>made with <span class="footer__heart">💖</span> for the fluffiest femboys on the internet</p>
-    <p class="footer__small">© 2026 furryfemboys.top</p>
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <span class="logo-icon">🌸</span>
+          furryfemboys.top
+        </a>
+        <p>A cozy community built on kindness, creativity, and the simple magic of being yourself.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Bluesky"><i class="fa-solid fa-cloud"></i></a>
+          <a href="#" aria-label="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#top">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#links">Links</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Guidelines</a>
+        <a href="#">FAQ</a>
+        <a href="#">Support</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Cookies</a>
+        <a href="#">Rules</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      Made with <span class="heart">♡</span> by the furryfemboys.top community · © 2026 · stay fluffy, stay sparkle
+    </div>
   </footer>
 
   <script src="js/main.js"></script>
