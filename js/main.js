@@ -25,7 +25,7 @@
   if (!waves.length) return;
   setTimeout(() => {
     waves.forEach((el) => el.remove());
-  }, 2100);
+  }, 2400);
 })();
 
 // Sparkle cursor trail

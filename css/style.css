@@ -739,8 +739,8 @@ footer {
 
 .wave {
   position: absolute;
-  width: 230%;
-  height: 230%;
+  width: 260%;
+  height: 260%;
   left: -45%;
   top: -45%;
   opacity: 0;
@@ -749,18 +749,30 @@ footer {
   animation: waveWash 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
+.wave-0 {
+  background: linear-gradient(135deg, #ffe3f0, #ffd1e6);
+  border-radius: 50%;
+  width: 130vmax;
+  height: 130vmax;
+  left: 50%;
+  top: 50%;
+  clip-path: none;
+  animation: circleWash 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
 .wave-1 {
-  background: linear-gradient(135deg, rgba(255, 182, 213, 0.95), rgba(255, 209, 230, 0.95));
+  background: linear-gradient(135deg, #ffe3f0, #ffd1e6);
+  animation-delay: 0.2s;
 }
 
 .wave-2 {
   background: linear-gradient(135deg, rgba(203, 182, 255, 0.95), rgba(224, 195, 255, 0.95));
-  animation-delay: 0.2s;
+  animation-delay: 0.4s;
 }
 
 .wave-3 {
   background: linear-gradient(135deg, rgba(167, 139, 250, 0.95), rgba(203, 182, 255, 0.95));
-  animation-delay: 0.4s;
+  animation-delay: 0.6s;
 }
 
 @keyframes waveWash {
@@ -768,6 +780,13 @@ footer {
   12%  { opacity: 1; }
   85%  { opacity: 1; }
   100% { opacity: 0; transform: translate(-85vmax, 85vmax) rotate(45deg); }
+}
+
+@keyframes circleWash {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  12%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  85%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(-85vmax, 85vmax) scale(1); }
 }
 
 @media (prefers-reduced-motion: reduce) {
