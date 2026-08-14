@@ -704,10 +704,10 @@ footer {
 
 .wave {
   position: absolute;
-  width: 260%;
-  height: 260%;
-  left: -45%;
-  top: -45%;
+  width: 150vmax;
+  height: 150vmax;
+  left: 50%;
+  top: 50%;
   opacity: 0;
   clip-path: url(#waveClip);
   will-change: transform;
@@ -748,17 +748,17 @@ footer {
 }
 
 @keyframes waveWash {
-  0%   { opacity: 0; transform: translate(55vmax, -85vmax) rotate(45deg); }
+  0%   { opacity: 0; transform: translate(-50%, -50%) translate(55vmax, -90vmax) rotate(45deg); }
   12%  { opacity: 1; }
   85%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-170vmax, 190vmax) rotate(45deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(-170vmax, 190vmax) rotate(45deg); }
 }
 
 @keyframes pinkWash {
-  0%   { opacity: 0; transform: translate(20vmax, -30vmax) rotate(45deg); }
+  0%   { opacity: 0; transform: translate(-50%, -50%) translate(20vmax, -30vmax) rotate(45deg); }
   12%  { opacity: 1; }
   85%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-170vmax, 190vmax) rotate(45deg); }
+  100% { opacity: 0; transform: translate(-50%, -50%) translate(-170vmax, 190vmax) rotate(45deg); }
 }
 
 @keyframes circleWash {
