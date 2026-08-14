@@ -19,6 +19,15 @@
   }
 })();
 
+// Page load wave cleanup
+(function initWaves() {
+  const waves = document.querySelectorAll(".wave");
+  if (!waves.length) return;
+  setTimeout(() => {
+    waves.forEach((el) => el.remove());
+  }, 2400);
+})();
+
 // Sparkle cursor trail
 (function initCursorSparkles() {
   let lastSparkle = 0;

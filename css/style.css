@@ -720,6 +720,60 @@ footer {
   75%      { transform: scale(1.15); }
 }
 
+/* ---------- page load wave wash ---------- */
+
+.wave-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.waves {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wave {
+  position: absolute;
+  width: 230%;
+  height: 230%;
+  left: -45%;
+  top: -45%;
+  opacity: 0;
+  clip-path: url(#waveClip);
+  will-change: transform;
+  animation: waveWash 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.wave-1 {
+  background: linear-gradient(135deg, rgba(255, 182, 213, 0.95), rgba(255, 209, 230, 0.95));
+}
+
+.wave-2 {
+  background: linear-gradient(135deg, rgba(203, 182, 255, 0.95), rgba(224, 195, 255, 0.95));
+  animation-delay: 0.35s;
+}
+
+.wave-3 {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.95), rgba(203, 182, 255, 0.95));
+  animation-delay: 0.7s;
+}
+
+@keyframes waveWash {
+  0%   { opacity: 0; transform: translate(60vmax, -60vmax) rotate(45deg); }
+  12%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-85vmax, 85vmax) rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .waves { display: none; }
+}
+
 /* ---------- reveal on scroll ---------- */
 
 .reveal {
