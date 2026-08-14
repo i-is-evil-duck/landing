@@ -1,9 +1,9 @@
-FROM nginx:alpine
+FROM httpd:alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY index.html /usr/share/nginx/html/
-COPY css/ /usr/share/nginx/html/css/
-COPY js/ /usr/share/nginx/html/js/
-COPY hero-icon.webp /usr/share/nginx/html/
+COPY httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY index.html /usr/local/apache2/htdocs/
+COPY css/ /usr/local/apache2/htdocs/css/
+COPY js/ /usr/local/apache2/htdocs/js/
+COPY hero-icon.webp /usr/local/apache2/htdocs/
 
 EXPOSE 80
