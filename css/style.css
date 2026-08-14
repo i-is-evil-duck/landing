@@ -34,6 +34,7 @@ body {
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
+  min-width: 770px;
   overflow-x: hidden;
   position: relative;
 }
@@ -711,7 +712,7 @@ footer {
   opacity: 0;
   clip-path: url(#waveClip);
   will-change: transform;
-  animation: waveWash 1.625s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: waveWash 2.19s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .wave-0 {
@@ -723,28 +724,28 @@ footer {
   top: 50%;
   clip-path: none;
   opacity: 1;
-  animation: circleWash 1.625s cubic-bezier(0.65, 0, 0.35, 1) forwards;
-  animation-delay: 0.1s;
+  animation: circleWash 2.19s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: 0.2s;
 }
 
 .wave-1 {
   background: linear-gradient(135deg, #ffe3f0, #ffd1e6);
-  animation: pinkWash 1.625s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation: pinkWash 2.19s cubic-bezier(0.65, 0, 0.35, 1) forwards;
 }
 
 .wave-1b {
   background: linear-gradient(135deg, rgba(255, 214, 235, 0.95), rgba(228, 196, 255, 0.95));
-  animation-delay: 0.08s;
+  animation-delay: 0.108s;
 }
 
 .wave-2 {
   background: linear-gradient(135deg, rgba(203, 182, 255, 0.95), rgba(224, 195, 255, 0.95));
-  animation-delay: 0.175s;
+  animation-delay: 0.236s;
 }
 
 .wave-3 {
   background: linear-gradient(135deg, rgba(167, 139, 250, 0.95), rgba(203, 182, 255, 0.95));
-  animation-delay: 0.2625s;
+  animation-delay: 0.354s;
 }
 
 @keyframes waveWash {
@@ -755,7 +756,7 @@ footer {
 }
 
 @keyframes pinkWash {
-  0%   { opacity: 0; transform: translate(-50%, -50%) translate(20vmax, -30vmax) rotate(45deg); }
+  0%   { opacity: 0; transform: translate(-50%, -50%) translate(19vmax, -28.5vmax) rotate(45deg); }
   12%  { opacity: 1; }
   85%  { opacity: 1; }
   100% { opacity: 0; transform: translate(-50%, -50%) translate(-170vmax, 190vmax) rotate(45deg); }
