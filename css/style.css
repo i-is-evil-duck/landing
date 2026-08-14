@@ -755,12 +755,12 @@ footer {
 
 .wave-2 {
   background: linear-gradient(135deg, rgba(203, 182, 255, 0.95), rgba(224, 195, 255, 0.95));
-  animation-delay: 0.35s;
+  animation-delay: 0.2s;
 }
 
 .wave-3 {
   background: linear-gradient(135deg, rgba(167, 139, 250, 0.95), rgba(203, 182, 255, 0.95));
-  animation-delay: 0.7s;
+  animation-delay: 0.4s;
 }
 
 @keyframes waveWash {
