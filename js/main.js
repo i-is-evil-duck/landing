@@ -19,6 +19,11 @@
   }
 })();
 
+// Disable right-click context menu
+(function initContextLock() {
+  document.addEventListener("contextmenu", (e) => e.preventDefault());
+})();
+
 // Page load wave cleanup
 (function initWaves() {
   const waves = document.querySelectorAll(".wave");
