@@ -301,11 +301,12 @@ nav {
   height: 150px;
   object-fit: cover;
   filter: drop-shadow(0 12px 24px rgba(255, 126, 199, 0.3));
-  animation: mascotSpin 10s linear infinite;
+  animation: mascotWobble 6s ease-in-out infinite;
 }
 
-@keyframes mascotSpin {
-  to { transform: rotate(360deg); }
+@keyframes mascotWobble {
+  0%, 100% { transform: rotate(-8deg); }
+  50%      { transform: rotate(8deg); }
 }
 
 @keyframes bob {
