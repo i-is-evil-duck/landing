@@ -19,14 +19,27 @@
   }
 })();
 
-// Custom image cursor that tracks the mouse exactly
+// Custom image cursor that smoothly follows the mouse
 (function initCustomCursor() {
   const cursor = document.getElementById("customCursor");
   if (!cursor) return;
 
+  const HALF = 24;
+  let targetX = 0, targetY = 0, currentX = 0, currentY = 0, raf = null;
+  const ease = 0.3;
+
+  const follow = () => {
+    currentX += (targetX - currentX) * ease;
+    currentY += (targetY - currentY) * ease;
+    cursor.style.transform = `translate(${currentX - HALF}px, ${currentY - HALF}px)`;
+    raf = requestAnimationFrame(follow);
+  };
+
   document.addEventListener("mousemove", (e) => {
-    cursor.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+    targetX = e.clientX;
+    targetY = e.clientY;
     cursor.style.opacity = "1";
+    if (!raf) raf = requestAnimationFrame(follow);
   });
 
   document.addEventListener("mouseleave", () => {

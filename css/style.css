@@ -52,13 +52,13 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   background: url("/cursor.png") no-repeat center / contain;
   pointer-events: none;
   user-select: none;
   z-index: 99999;
-  transform: translate(-16px, -16px);
+  transform: translate(-24px, -24px);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
