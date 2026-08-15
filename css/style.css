@@ -41,6 +41,11 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  cursor: url("cursor.jpg"), auto;
+}
+
+* {
+  cursor: url("cursor.jpg"), auto;
 }
 
 h1, h2, h3, .logo, .btn, .link-card__text strong {
@@ -225,6 +230,34 @@ nav {
   background: rgba(255, 126, 199, 0.15);
   color: var(--pink-deep);
   transform: translateY(-2px);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255, 126, 199, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.nav-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--pink);
+  color: var(--pink-deep);
+  box-shadow: 0 6px 16px rgba(255, 126, 199, 0.25);
 }
 
 .nav-cta {

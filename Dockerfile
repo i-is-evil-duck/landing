@@ -5,5 +5,7 @@ COPY index.html /usr/local/apache2/htdocs/
 COPY css/ /usr/local/apache2/htdocs/css/
 COPY js/ /usr/local/apache2/htdocs/js/
 COPY hero-icon.webp /usr/local/apache2/htdocs/
+COPY favicon.jpg /usr/local/apache2/htdocs/
+COPY cursor.jpg /usr/local/apache2/htdocs/
 
 EXPOSE 80
