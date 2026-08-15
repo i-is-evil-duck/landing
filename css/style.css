@@ -300,6 +300,7 @@ nav {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  margin-right: 40px;
   filter: drop-shadow(0 12px 24px rgba(255, 126, 199, 0.3));
   animation: mascotWobble 6s ease-in-out infinite;
 }
