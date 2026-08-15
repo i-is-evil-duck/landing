@@ -19,6 +19,25 @@
   }
 })();
 
+// Custom image cursor that tracks the mouse exactly
+(function initCustomCursor() {
+  const cursor = document.getElementById("customCursor");
+  if (!cursor) return;
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.transform = `translate(${e.clientX - 16}px, ${e.clientY - 16}px)`;
+    cursor.style.opacity = "1";
+  });
+
+  document.addEventListener("mouseleave", () => {
+    cursor.style.opacity = "0";
+  });
+
+  document.addEventListener("mouseenter", () => {
+    cursor.style.opacity = "1";
+  });
+})();
+
 // Disable right-click context menu
 (function initContextLock() {
   document.addEventListener("contextmenu", (e) => e.preventDefault());

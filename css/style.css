@@ -41,11 +41,26 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
-  cursor: url("cursor.png") 32 32, auto;
+  cursor: none;
 }
 
 * {
-  cursor: url("cursor.png") 32 32, auto;
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background: url("cursor.png") no-repeat center / contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: 99999;
+  transform: translate(-16px, -16px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
 h1, h2, h3, .logo, .btn, .link-card__text strong {
