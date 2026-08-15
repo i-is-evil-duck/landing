@@ -54,7 +54,7 @@ body {
   left: 0;
   width: 32px;
   height: 32px;
-  background: url("cursor.png") no-repeat center / contain;
+  background: url("/cursor.png") no-repeat center / contain;
   pointer-events: none;
   user-select: none;
   z-index: 99999;
