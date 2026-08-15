@@ -24,7 +24,7 @@
   const cursor = document.getElementById("customCursor");
   if (!cursor) return;
 
-  const HALF = 24;
+  const HALF = 32;
   let targetX = 0, targetY = 0, currentX = 0, currentY = 0, raf = null;
   const ease = 0.3;
 
