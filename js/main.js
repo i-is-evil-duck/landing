@@ -161,9 +161,8 @@
 
   if (saved === "dark" || saved === "light") {
     applyTheme(saved);
-  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    applyTheme("dark");
   } else {
+    // default to light mode as requested — ignore system preference
     applyTheme("light");
   }
 
