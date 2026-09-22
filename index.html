@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://www.nerdfonts.com/assets/css/webfont.css" />
-  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/style.css?v=3" />
 </head>
 <body>
 
@@ -46,13 +46,14 @@
     </a>
     <ul class="nav-links">
       <li><a href="#top">Home</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#games">Games</a></li>
       <li><a href="https://git.furryfemboys.top" target="_blank" rel="noopener noreferrer">Git</a></li>
-      <li><a href="https://down.j3ly.com/" target="_blank" rel="noopener noreferrer">Uptime</a></li>
     </ul>
-    <a href="https://discord.gg/T3cPWmKFg" class="nav-cta" target="_blank" rel="noopener noreferrer">
-      <i class="fa-brands fa-discord"></i>
-      Join Us
-    </a>
+    <button id="themeToggle" class="nav-cta theme-toggle" type="button" aria-label="Toggle light/dark theme">
+      <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      <span class="theme-toggle__text">Dark</span>
+    </button>
   </nav>
 
   <main id="top">
@@ -73,13 +74,13 @@
       <p class="hero__tagline">meow :3 kittys femboys &amp; frends ♡</p>
 
       <div class="hero__actions">
-        <a href="#Quick-links" class="btn btn--primary">Quick-links ♡</a>
+        <a href="#Quick-links" class="btn btn--primary">All links ♡</a>
       </div>
 
       <div class="hero__scroll" aria-hidden="true">⌄ scroll down, pookie :D </div>
     </section>
 
-    <!-- FEATURES -->
+    <!-- QUICK LINKS -->
     <section class="content" id="Quick-links">
       <h2 class="section-title">Quick links ♡</h2>
       <p class="section-subtitle">Abuncha links to cool stuff :P</p>
@@ -88,37 +89,119 @@
         <a href="https://git.furryfemboys.top" class="feature-card" target="_blank" rel="noopener noreferrer">
           <div class="feature-icon purple"><i class="fa-brands fa-git-alt"></i></div>
           <h3>Git Server</h3>
-          <p>Our own custom git server on git.furryfemboys.top — host repos &amp; share code.</p>
+          <p>Our own custom git server on git.furryfemboys.top</p>
         </a>
 
         <a href="https://bin.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
           <div class="feature-icon blue"><i class="fa-solid fa-upload"></i></div>
           <h3>File Bin</h3>
-          <p>Temporary file hosting over at bin.j3ly.com — share big files up to 50GB.</p>
+          <p>Temp file hosting over at bin.j3ly.com — share big files up to 50GB.</p>
         </a>
 
-        <a href="https://haste.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+        <a href="https://paste.furryfemboys.top/" class="feature-card" target="_blank" rel="noopener noreferrer">
           <div class="feature-icon mint"><i class="fa-solid fa-paste"></i></div>
           <h3>Paste Bin</h3>
-          <p>A simple paste bin service on haste.j3ly.com — quick pastes &amp; code snippets.</p>
+          <p>A simple paste bin service on paste.furryfemboys.top — quick pastes &amp; code snippets.</p>
+        </a>
+
+        <a href="https://link.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon pink"><i class="fa-solid fa-link"></i></div>
+          <h3>Link Shortener</h3>
+          <p>Shorten links on link.j3ly.com — fast &amp; cute URL shortener.</p>
         </a>
 
         <a href="https://draw.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
           <div class="feature-icon yellow"><i class="fa-solid fa-pen-nib"></i></div>
           <h3>Drawing Board</h3>
-          <p>An easy-to-use, shareable drawing board on draw.j3ly.com — doodle together!</p>
+          <p>An easy-to-use, shareable drawing board on draw.j3ly.com</p>
         </a>
 
-        <a href="https://cheese-simulator.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+        <a href="https://morse.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon peach"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <h3>Morse</h3>
+          <p>Learn morse code online at morse.j3ly.com — beep boop :3</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="content" id="tools">
+      <h2 class="section-title">Tools ♡</h2>
+      <p class="section-subtitle">Handy utilities for everyday chaos — file sharing, links, doodles &amp; more!</p>
+
+      <div class="features-grid">
+        <a href="https://bin.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon blue"><i class="fa-solid fa-upload"></i></div>
+          <h3>File Bin</h3>
+          <p>Temp file upload — share big files up to 50GB on bin.j3ly.com</p>
+        </a>
+
+        <a href="https://link.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon pink"><i class="fa-solid fa-link"></i></div>
+          <h3>Link Shortener</h3>
+          <p>Shorten &amp; share links in seconds on link.j3ly.com</p>
+        </a>
+
+        <a href="https://draw.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon yellow"><i class="fa-solid fa-pen-nib"></i></div>
+          <h3>Drawing Board</h3>
+          <p>Collaborative drawing whiteboard on draw.j3ly.com</p>
+        </a>
+
+        <a href="https://paste.furryfemboys.top/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon mint"><i class="fa-solid fa-paste"></i></div>
+          <h3>Paste Bin</h3>
+          <p>Quick paste bin for code &amp; text on paste.furryfemboys.top</p>
+        </a>
+
+        <a href="https://moe.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon purple"><i class="fa-solid fa-eye"></i></div>
+          <h3>Visitor Tracker</h3>
+          <p>Track visitors with moe.j3ly.com — cute analytics!</p>
+        </a>
+
+        <a href="https://mp3.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon peach"><i class="fa-solid fa-music"></i></div>
+          <h3>MP3 Player</h3>
+          <p>Stream &amp; vibe on mp3.j3ly.com — your cute mp3 player.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- GAMES -->
+    <section class="content" id="games">
+      <h2 class="section-title">Games ♡</h2>
+      <p class="section-subtitle">Play something cute — from mario to cheese simulator!</p>
+
+      <div class="features-grid">
+        <a href="https://mario.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon blue"><i class="fa-solid fa-gamepad"></i></div>
+          <h3>Mario</h3>
+          <p>Mario remake in Zig ported to WASM on mario.j3ly.com</p>
+        </a>
+
+        <a href="https://toca.furryfemboys.top/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon mint"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Toca Nature</h3>
+          <p>Port of Toca Nature to WebGL on toca.furryfemboys.top</p>
+        </a>
+
+        <a href="https://morse.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon yellow"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <h3>Morse</h3>
+          <p>Learn morse code online at morse.j3ly.com — beep boop :3</p>
+        </a>
+
+        <a href="https://tag.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
+          <div class="feature-icon purple"><i class="fa-solid fa-person-running"></i></div>
+          <h3>Tag</h3>
+          <p>Online tag game — supports up to 6 players on tag.j3ly.com</p>
+        </a>
+
+        <a href="https://cheese-simulator.evilduckz.net/" class="feature-card" target="_blank" rel="noopener noreferrer">
           <div class="feature-icon peach"><i class="fa-solid fa-cheese"></i></div>
           <h3>Cheese Simulator</h3>
-          <p>The cheese game, live at cheese-simulator.j3ly.com. Go make some cheese :3</p>
-        </a>
-
-        <a href="https://down.j3ly.com/" class="feature-card" target="_blank" rel="noopener noreferrer">
-          <div class="feature-icon pink"><i class="fa-solid fa-heart-pulse"></i></div>
-          <h3>Down Detector</h3>
-          <p>Check if a site is really down on down.j3ly.com — quick, friendly status checks!</p>
+          <p>Be the cheese man, eat all the cheese on cheese-simulator.evilduckz.net :3</p>
         </a>
       </div>
     </section>
@@ -144,6 +227,8 @@
         <h4>Explore</h4>
         <a href="#top">Home</a>
         <a href="#Quick-links">Quick Links</a>
+        <a href="#tools">Tools</a>
+        <a href="#games">Games</a>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
@@ -165,6 +250,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>

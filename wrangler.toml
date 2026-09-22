@@ -1,0 +1,11 @@
+name = "landing"
+compatibility_date = "2026-09-22"
+
+# Serve static assets directly via Cloudflare Workers (no Docker)
+# Connected to GitHub — auto deploys on push to master
+[assets]
+directory = "."
+not_found_handling = "single-page-application"
+
+# Optional: ensure correct MIME types are served via Workers assets
+# Caching is handled by Cloudflare automatically; for custom headers use _headers file

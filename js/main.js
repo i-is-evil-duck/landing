@@ -132,6 +132,47 @@
   });
 })();
 
+// Light / dark theme toggle (replaces Discord CTA)
+(function initThemeToggle() {
+  const btn = document.getElementById("themeToggle");
+  if (!btn) return;
+  const icon = btn.querySelector("i");
+  const text = btn.querySelector(".theme-toggle__text");
+  const STORAGE_KEY = "theme";
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
+    if (icon && text) {
+      if (theme === "dark") {
+        icon.className = "fa-solid fa-sun";
+        text.textContent = "Light";
+        btn.setAttribute("aria-label", "Switch to light theme");
+      } else {
+        icon.className = "fa-solid fa-moon";
+        text.textContent = "Dark";
+        btn.setAttribute("aria-label", "Switch to dark theme");
+      }
+    }
+  }
+
+  let saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+
+  if (saved === "dark" || saved === "light") {
+    applyTheme(saved);
+  } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
+
+  btn.addEventListener("click", () => {
+    const current = document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    applyTheme(current === "dark" ? "light" : "dark");
+  });
+})();
+
 // Cute tilt on link cards
 (function initTilt() {
   const cards = document.querySelectorAll(".link-card");
