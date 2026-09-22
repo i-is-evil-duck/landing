@@ -214,13 +214,40 @@ function initTilt() {
 }
 (function () { initTilt(); })();
 
-// Seamless subpage navigation — fetch + View Transition (no full reload)
+// Seamless subpage navigation — fetch + View Transition (no full reload), clean URLs (/links not /links.html, / not /index.html)
 (function initSeamlessNav() {
   const cache = new Map();
   const mainSelector = "main";
-  const isInternalHtml = (url) => {
-    return url.origin === location.origin && (url.pathname.endsWith(".html") || url.pathname === "/" || url.pathname === "/index.html");
+  const CLEAN_MAP = {
+    "/index.html": "/",
+    "/links.html": "/links",
+    "/links/index.html": "/links"
   };
+  const FETCH_MAP = {
+    "/links": "/links",
+    "/links/": "/links/",
+    "/": "/",
+    "/index.html": "/index.html",
+    "/links.html": "/links.html"
+  };
+  function toClean(pathname) {
+    return CLEAN_MAP[pathname] || pathname;
+  }
+  function normalizePath(pathname) {
+    // handle clean <-> html mapping for fetch
+    if (pathname === "/links" || pathname === "/links/") return pathname;
+    return pathname;
+  }
+  const isInternalPage = (url) => {
+    if (url.origin !== location.origin) return false;
+    const p = url.pathname;
+    return p === "/" || p === "/index.html" || p === "/links" || p === "/links/" || p === "/links.html" || p === "/links/index.html" || p.endsWith(".html");
+  };
+  function toFetchPath(pathname) {
+    // For clean URLs, fetch the same clean path — server serves directory index for /links
+    // For /links.html keep as is; for / keep as /
+    return pathname;
+  }
 
   async function fetchPage(path) {
     if (cache.has(path)) return cache.get(path);
@@ -238,39 +265,49 @@ function initTilt() {
     return { main, title, doc };
   }
 
+  function getCleanUrl(url) {
+    const cleanPath = toClean(url.pathname);
+    return cleanPath + url.search + url.hash;
+  }
+
+  function isSamePage(url) {
+    const curClean = toClean(location.pathname);
+    const nextClean = toClean(url.pathname);
+    return curClean === nextClean;
+  }
+
   async function navigate(urlStr, push = true) {
     let url;
     try { url = new URL(urlStr, location.href); } catch { location.href = urlStr; return; }
 
+    const cleanHref = getCleanUrl(url);
+
     // same-page hash -> just scroll
-    if (url.pathname === location.pathname && url.hash) {
+    if (isSamePage(url) && url.hash) {
       const target = document.querySelector(url.hash);
       if (target) {
         target.scrollIntoView({ behavior: "smooth", block: "start" });
-        if (push) history.pushState(null, "", urlStr);
+        if (push) history.pushState(null, "", cleanHref);
       }
       return;
     }
 
-    // only handle internal html pages
-    if (!isInternalHtml(url)) { location.href = urlStr; return; }
-    if (url.pathname === location.pathname && !url.hash) return; // same page no hash
+    if (!isInternalPage(url)) { location.href = urlStr; return; }
+    if (isSamePage(url) && !url.hash) return; // same page no hash
 
     document.documentElement.classList.add("is-navigating");
     try {
-      const htmlText = await fetchPage(url.pathname + url.search);
+      const fetchPath = toFetchPath(url.pathname) + url.search;
+      const htmlText = await fetchPage(fetchPath);
       const { main: newMain, title } = parseMain(htmlText);
-      if (!newMain) { location.href = urlStr; return; }
+      if (!newMain) { location.href = cleanHref; return; }
 
       const doSwap = () => {
         const curMain = document.querySelector(mainSelector);
         if (curMain) curMain.innerHTML = newMain.innerHTML;
         if (title) document.title = title;
-        // refresh dynamic bits
         refreshReveal();
         initTilt();
-        // waves already cleaned; ensure sparkles not duplicated
-        // handle hash scroll or top
         if (url.hash) {
           requestAnimationFrame(() => {
             const target = document.querySelector(url.hash);
@@ -285,7 +322,6 @@ function initTilt() {
         await document.startViewTransition(doSwap).finished;
       } else {
         doSwap();
-        // slight fade for browsers without view transition
         const curMain = document.querySelector(mainSelector);
         if (curMain) {
           curMain.style.opacity = "0";
@@ -298,9 +334,9 @@ function initTilt() {
         }
       }
 
-      if (push) history.pushState(null, "", urlStr);
+      if (push) history.pushState(null, "", cleanHref);
     } catch (e) {
-      location.href = urlStr;
+      location.href = getCleanUrl(url);
     } finally {
       setTimeout(() => document.documentElement.classList.remove("is-navigating"), 300);
     }
@@ -311,15 +347,13 @@ function initTilt() {
     if (!a) return;
     const href = a.getAttribute("href");
     if (!href || href.startsWith("mailto:") || href.startsWith("tel:") || a.target === "_blank" || a.hasAttribute("download")) return;
-    if (href.startsWith("#")) return; // handled by delegated smooth scroll
+    if (href.startsWith("#")) return;
     let url;
     try { url = new URL(href, location.href); } catch { return; }
     if (url.origin !== location.origin) return;
-    // external git etc have target blank already, but also check href contains // and different host
-    // only intercept .html navigations (index.html, links.html and variants with hash)
-    const isHtmlNav = url.pathname.endsWith(".html") || url.pathname === "/" || url.pathname === "/index.html";
+    const p = url.pathname;
+    const isHtmlNav = p === "/" || p === "/index.html" || p === "/links" || p === "/links/" || p === "/links.html" || p.endsWith(".html");
     if (!isHtmlNav) return;
-    // ignore same-page hash already handled above? but href like links.html#tools when already on links.html should be same-page hash -> let navigate handle as scroll
     e.preventDefault();
     navigate(url.href, true);
   });
@@ -328,10 +362,22 @@ function initTilt() {
     navigate(location.href, false);
   });
 
-  // prefetch links.html on idle for instant first navigation
+  // normalize current URL on load: hide .html if present
+  (function normalizeCurrentUrl() {
+    const cur = new URL(location.href);
+    const clean = toClean(cur.pathname);
+    if (clean !== cur.pathname) {
+      history.replaceState(null, "", clean + cur.search + cur.hash);
+    }
+  })();
+
+  // prefetch the other page on idle for instant first navigation
   const prefetch = () => {
-    const url = location.pathname.endsWith("links.html") ? "index.html" : "links.html";
+    const curClean = toClean(location.pathname);
+    const url = curClean === "/links" ? "/" : "/links";
     fetchPage(url).catch(() => {});
+    // also prefetch legacy html for fallback
+    fetchPage(curClean === "/links" ? "/index.html" : "/links.html").catch(() => {});
   };
   if ("requestIdleCallback" in window) requestIdleCallback(prefetch, { timeout: 2000 });
   else setTimeout(prefetch, 1500);
